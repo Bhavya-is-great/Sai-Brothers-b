@@ -4,7 +4,7 @@ const cors = require('cors');
 const {createClient} = require('@supabase/supabase-js');
 require('dotenv').config()
 
-app.use(cors({origin:["https://sai-brothersbackend.onrender.com","http://localhost:8081/"]}));
+app.use(cors({origin: true, credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 app.post('/allitem',async (req,res)=>{
