@@ -49,6 +49,28 @@ app.post('/getitem',async (req,res)=>{
     }
 });
 
+app.post('/getitemn',async (req,res)=>{
+    const url = process.env.URL;
+    const anon = process.env.anon;
+    const supabase = createClient(url,anon);
+    const table = req.body.table;
+    const title = req.body.name;
+
+    const {data,error} = await supabase
+    .from(table)
+    .select()
+    .eq('title',title)
+
+    if (data) {
+        // console.log(data)
+        res.json(data);
+    }
+    if(error){
+        // console.log(error)
+        res.json(error);
+    }
+});
+
 app.post('/deleteitem',async (req,res)=>{
     const url = process.env.URL;
     const anon = process.env.anon;
