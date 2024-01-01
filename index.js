@@ -6,7 +6,7 @@ require('dotenv').config()
 
 app.use(cors({origin: true, credentials: true}));
 app.use(express.json());
-app.use(express.urlencoded({extended:false}))
+app.use(express.urlencoded({extended : false}))
 
 app.post('/allitem',async (req,res)=>{
     const url = process.env.URL;
