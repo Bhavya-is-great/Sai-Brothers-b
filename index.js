@@ -95,6 +95,34 @@ app.post('/deleteitem',async (req,res)=>{
     res.json({deleted: true});
 });
 
+app.post('/getlist',async (req,res)=>{
+    const {data,error} = await supabase.from("list")
+    .select()
+    .eq('id',1)
+
+    if (data) {
+        res.json(data)
+    }
+    if (error) {
+        res.json(error)
+    }
+})
+app.put('/setlist',async (req,res)=>{
+    const datagot = req.body.list;
+
+    const {data,error} = await supabase
+    .from("list")
+    .update({list:datagot})
+    .eq('id',1);
+
+    if (data) {
+        res.json({updated:true})
+    }
+    if (error) {
+        res.json(error)
+    }
+})
+
 app.post('/updateditem',async (req,res)=>{
     const url = process.env.URL;
     const anon = process.env.anon;
