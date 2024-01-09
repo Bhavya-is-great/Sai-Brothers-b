@@ -96,6 +96,9 @@ app.post('/deleteitem',async (req,res)=>{
 });
 
 app.post('/getlist',async (req,res)=>{
+    const url = process.env.URL;
+    const anon = process.env.anon;
+    const supabase = createClient(url,anon);
     const {data,error} = await supabase.from("list")
     .select()
     .eq('id',1)
@@ -108,6 +111,9 @@ app.post('/getlist',async (req,res)=>{
     }
 })
 app.put('/setlist',async (req,res)=>{
+    const url = process.env.URL;
+    const anon = process.env.anon;
+    const supabase = createClient(url,anon);
     const datagot = req.body.list;
 
     const {data,error} = await supabase
