@@ -8,9 +8,6 @@ app.use(cors({origin: true, credentials: true}));
 app.use(express.json());
 app.use(express.urlencoded({extended : false}))
 
-app.use("/", (req, res) => {
-  res.json({ message: "Hello From Express App" });
-});
 
 app.post('/allitem',async (req,res)=>{
     const url = process.env.URL;
